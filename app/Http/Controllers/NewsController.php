@@ -27,9 +27,6 @@ class NewsController extends Controller
 
     public function getTeamNews(Team $team)
     {
-        // $posts = $author->posts->where('is_published', true);
-        // ovaj nacin bi dao sve iz baze, pa nam onda u ram-u odvojio published ^
-
         $articles = $team->articles()->with('user')->where('team_id', $team->id)->paginate(15);
         return view('news.index', compact('articles'));
     }
