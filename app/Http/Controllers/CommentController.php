@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
+use App\Mail\CommentReceived;
 use App\Team;
 use App\Comment;
 
@@ -19,6 +21,8 @@ class CommentController extends Controller
         $data1 = ["team_id" => $team->id, "user_id" => Auth::id()];
         // $team->comments()->create($data);
         $comment = Comment::create(array_merge($data, $data1));
+
+        Mail::to($team)->send(new CommentReceived($comment));
 
         return back();
     }

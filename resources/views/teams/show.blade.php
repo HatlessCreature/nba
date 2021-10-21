@@ -27,7 +27,9 @@
 
 <h5>Comments</h5>
 @forelse($team->comments as $comment)
-{{ $comment->content }}
+<div>
+    {{ $comment->content }}
+</div>
 @empty
 <span>No comments</span>
 @endforelse
