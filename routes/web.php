@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/teams', [TeamController::class, 'index']);
     Route::get('/teams/{team}', [TeamController::class, 'show'])->name('team');
-    Route::post('/teams/{team}/comments', [CommentController::class, 'store'])->name('createComment');
+    Route::post('/teams/{team}/comments', [CommentController::class, 'store'])->name('createComment')->middleware('forbiddenComment');
     Route::get('/players/{player}', [PlayerController::class, 'show'])->name('player');
     Route::post('/logout', [AuthController::class, 'logout']);
 });
