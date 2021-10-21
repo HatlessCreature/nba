@@ -15,4 +15,9 @@ class Team extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class, 'articles_teams');
+    }
 }

@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/news', [NewsController::class, 'index']);
     Route::get('/news/{article}', [NewsController::class, 'show'])->name('article');
+    Route::get('/news/team/{team}', [NewsController::class, 'getTeamNews'])->name('teamNews');
 });
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'getRegisterForm']);

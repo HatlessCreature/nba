@@ -14,4 +14,9 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'articles_teams');
+    }
 }

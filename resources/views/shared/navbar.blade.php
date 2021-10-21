@@ -4,6 +4,9 @@
         <a class="navbar-brand" href="/teams">
             Teams
         </a>
+        <a class="navbar-brand" href="/news">
+            News
+        </a>
         <div>
             {{ auth()->user()->name }}
         </div>
