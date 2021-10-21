@@ -5,6 +5,8 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\NewsController;
+
 
 
 
@@ -28,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/teams/{team}/comments', [CommentController::class, 'store'])->name('createComment')->middleware('forbiddenComment');
     Route::get('/players/{player}', [PlayerController::class, 'show'])->name('player');
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/news', [NewsController::class, 'index']);
+    Route::get('/news/{article}', [NewsController::class, 'show'])->name('article');
 });
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'getRegisterForm']);
