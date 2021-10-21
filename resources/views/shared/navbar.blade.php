@@ -10,6 +10,9 @@
         <div>
             {{ auth()->user()->name }}
         </div>
+        <a class="navbar-brand" href="/news/create">
+            Create Article
+        </a>
         <div>
             <form action="/logout" method="POST">
                 @csrf
